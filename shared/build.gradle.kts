@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("plugin.serialization") version "1.8.21";
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -32,6 +33,7 @@ kotlin {
                 //put your multiplatform dependencies here
                 implementation("io.ktor:ktor-client-core:${ktor_version}");
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4");
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1");
             }
         }
         val commonTest by getting {
