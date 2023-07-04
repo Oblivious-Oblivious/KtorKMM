@@ -26,14 +26,33 @@ kotlin {
     }
 
     sourceSets {
+        val ktor_version = "2.3.2";
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
+                implementation("io.ktor:ktor-client-core:${ktor_version}");
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4");
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+
+        val androidMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-okhttp:${ktor_version}");
+            }
+        }
+
+        val iosMain by getting {
+            dependsOn(commonMain);
+//            iosX64Main.dependsOn(this);
+//            iosArm64Main.dependsOn(this);
+//            iosSimulatorArm64Main.dependsOn(this);
+            dependencies {
+                implementation("io.ktor:ktor-client-darwin:${ktor_version}");
             }
         }
     }
