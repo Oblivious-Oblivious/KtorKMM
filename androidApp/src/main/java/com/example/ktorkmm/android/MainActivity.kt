@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,6 +14,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.ktorkmm.Greeting
 
 import androidx.compose.runtime.*;
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.ktorkmm.CyberWork
 import kotlinx.coroutines.launch;
 
 class MainActivity : ComponentActivity() {
@@ -23,21 +30,25 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val scope = rememberCoroutineScope();
-                    var text by remember {
-                        mutableStateOf("Loading");
+
+                    var works by remember {
+                        mutableStateOf(listOf<CyberWork>());
                     };
+
+                    var item = listOf(CyberWork("error","error","error"));
 
                     LaunchedEffect(true) {
                         scope.launch {
-                            text = try {
-                                Greeting().greeting();
+                            works = try {
+                                Greeting().get_json().cyberpunk_works;
                             }
                             catch(e: Exception) {
-                                e.localizedMessage ?: "error";
+                                val err = e.localizedMessage ?: "error";
+                                listOf(CyberWork(err, err, err));
                             }
                         }
                     }
-                    GreetingView(text);
+                    GreetingView(works);
                 }
             }
         }
@@ -45,14 +56,15 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
+fun GreetingView(works: List<CyberWork>) {
+    LazyColumn {
+        items(works) {
+            Text(
+                text = "${it.name} (${it.year}), ${it.creator}",
+                fontSize = 36.sp,
+                modifier = Modifier.padding(8.dp)
+            );
+            Divider(color = Color.Gray, thickness = 1.dp);
+        }
     }
 }
