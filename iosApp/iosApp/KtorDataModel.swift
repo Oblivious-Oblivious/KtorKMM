@@ -13,7 +13,7 @@ class KtorDataModel: ObservableObject {
     @Published var works: [CyberWork] = [];
 
     init() {
-        Greeting().get_json() { data, error in
+        JsonGetter().get_json() { data, error in
             if let cyberlist = data {
                 cyberlist.cyberpunk_works.forEach { work in
                     self.works.append(work);
