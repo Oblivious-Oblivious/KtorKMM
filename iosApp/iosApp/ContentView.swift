@@ -1,8 +1,10 @@
 import SwiftUI;
 import shared;
+import Alamofire;
 
 struct ContentView: View {
-    @ObservedObject var viewmodel: ViewModel;
+    @ObservedObject var viewmodel: AlamofireDataModel;
+//    @ObservedObject var viewmodel: KtorDataModel;
 
     var body: some View {
         List {
@@ -15,6 +17,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-        ContentView(viewmodel: ViewModel());
+        ContentView(viewmodel: AlamofireDataModel());
 	}
 }

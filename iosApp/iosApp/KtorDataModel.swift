@@ -1,5 +1,5 @@
 //
-//  ViewModel.swift
+//  KtorDataModel.swift
 //  iosApp
 //
 //  Created by Thanasis Papapostolou on 05/07/2023.
@@ -9,7 +9,7 @@
 import SwiftUI;
 import shared;
 
-class ViewModel: ObservableObject {
+class KtorDataModel: ObservableObject {
     @Published var works: [CyberWork] = [];
 
     init() {
