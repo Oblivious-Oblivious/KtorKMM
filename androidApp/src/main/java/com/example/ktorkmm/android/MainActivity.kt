@@ -60,7 +60,7 @@ fun GreetingView(works: List<CyberWork>) {
         items(works) {
             Text(
                 text = "${it.name} (${it.year}), ${it.creator}",
-                fontSize = 36.sp,
+                fontSize = 18.sp,
                 modifier = Modifier.padding(8.dp)
             );
             Divider(color = Color.Gray, thickness = 1.dp);

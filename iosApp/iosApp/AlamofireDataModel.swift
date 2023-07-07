@@ -14,7 +14,7 @@ class AlamofireDataModel: ObservableObject {
 
     init() {
         AF
-            .request("http://127.0.0.1:8080/cyberpunk.json")
+            .request("https://lively-ganache-1b6917.netlify.app/cyberpunk.json")
             .responseDecodable(of: SwiftCyberList.self) { response in
             guard let data = response.value else { return };
             data.cyberpunk_works.forEach { work in
