@@ -11,8 +11,8 @@ import Alamofire;
 
 class AlamofireDataModel: ObservableObject {
     @Published var works: [SwiftCyberWork] = [];
-    
-    func get_json() {
+
+    init() {
         AF
             .request("http://127.0.0.1:8080/cyberpunk.json")
             .responseDecodable(of: SwiftCyberList.self) { response in
@@ -21,9 +21,5 @@ class AlamofireDataModel: ObservableObject {
                 self.works.append(work);
             }
         }
-    }
-
-    init() {
-        get_json();
     }
 }
