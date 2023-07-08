@@ -3,8 +3,8 @@ import shared;
 import Alamofire;
 
 struct ContentView: View {
-    @ObservedObject var viewmodel: AlamofireDataModel;
-//    @ObservedObject var viewmodel: KtorDataModel;
+//    @ObservedObject var viewmodel: AlamofireDataModel;
+    @ObservedObject var viewmodel: KtorDataModel;
 
     var body: some View {
         List {
@@ -17,6 +17,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-        ContentView(viewmodel: AlamofireDataModel());
+//        ContentView(viewmodel: AlamofireDataModel());
+        ContentView(viewmodel: KtorDataModel());
 	}
 }
