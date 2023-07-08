@@ -31,19 +31,20 @@ class MainActivity : ComponentActivity() {
                     val scope = rememberCoroutineScope();
 
                     var works by remember {
-                        mutableStateOf(listOf<CyberWork>());
+//                        mutableStateOf(listOf<CyberWork>());
+                        mutableStateOf(listOf<KotlinCyberWork>());
                     };
-
-                    var item = listOf(CyberWork("error","error","error"));
 
                     LaunchedEffect(true) {
                         scope.launch {
                             works = try {
-                                JsonGetter().get_json().cyberpunk_works;
+//                                JsonGetter().get_json().cyberpunk_works;
+                                RetrofitDataModel().get_json().cyberpunk_works;
                             }
                             catch(e: Exception) {
                                 val err = e.localizedMessage ?: "error";
-                                listOf(CyberWork(err, err, err));
+//                                listOf(CyberWork(err, err, err));
+                                listOf(KotlinCyberWork(err, err, err));
                             }
                         }
                     }
@@ -55,7 +56,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingView(works: List<CyberWork>) {
+//fun GreetingView(works: List<CyberWork>) {
+fun GreetingView(works: List<KotlinCyberWork>) {
     LazyColumn {
         items(works) {
             Text(

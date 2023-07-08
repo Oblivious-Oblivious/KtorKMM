@@ -47,4 +47,6 @@ dependencies {
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4");
+    implementation("com.squareup.retrofit2:retrofit:2.9.0");
+    implementation("com.squareup.retrofit2:converter-jackson:2.9.0");
 }
