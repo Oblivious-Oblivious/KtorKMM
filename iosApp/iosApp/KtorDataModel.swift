@@ -11,6 +11,7 @@ import shared;
 
 class KtorDataModel: ObservableObject {
     @Published var works: [CyberWork] = [];
+    @Published var library = "";
 
     init() {
         JsonGetter().get_json { data, error in
@@ -18,6 +19,7 @@ class KtorDataModel: ObservableObject {
                 cyberlist.cyberpunk_works.forEach { work in
                     self.works.append(work);
                 }
+                self.library = "Ktor";
             }
             else {
                 let nullsafe_error = error?.localizedDescription ?? "error";

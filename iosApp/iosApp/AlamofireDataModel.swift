@@ -11,6 +11,7 @@ import Alamofire;
 
 class AlamofireDataModel: ObservableObject {
     @Published var works: [SwiftCyberWork] = [];
+    @Published var library = "";
 
     init() {
         AF
@@ -21,5 +22,6 @@ class AlamofireDataModel: ObservableObject {
                 self.works.append(work);
             }
         }
+        self.library = "Alamofire";
     }
 }
