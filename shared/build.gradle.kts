@@ -32,7 +32,7 @@ kotlin {
             dependencies {
                 //put your multiplatform dependencies here
                 implementation("io.ktor:ktor-client-core:${ktor_version}");
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4");
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1");
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1");
             }
         }
