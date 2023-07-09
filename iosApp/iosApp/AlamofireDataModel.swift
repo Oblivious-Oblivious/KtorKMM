@@ -11,17 +11,19 @@ import Alamofire;
 
 class AlamofireDataModel: ObservableObject {
     @Published var works: [SwiftCyberWork] = [];
-    @Published var library = "";
+    @Published var library = "Alamofire";
 
     init() {
         AF
             .request("https://cyberpunk-data-host.dreamnotexpiring.com/")
             .responseDecodable(of: SwiftCyberList.self) { response in
-            guard let data = response.value else { return };
-            data.cyberpunk_works.forEach { work in
-                self.works.append(work);
+                if let data = response.value {
+                    self.works = data.cyberpunk_works;
+                }
+                else {
+                    let err = response.error?.localizedDescription ?? "error";
+                    self.works = [SwiftCyberWork(name: err, creator: err, year: err)];
+                }
             }
-        }
-        self.library = "Alamofire";
     }
 }
