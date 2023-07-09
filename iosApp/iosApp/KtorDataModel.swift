@@ -16,7 +16,9 @@ class KtorDataModel: ObservableObject {
     init() {
         JsonGetter().get_json { data, error in
             if let cyberlist = data {
-                self.works = cyberlist.cyberpunk_works;
+                DispatchQueue.main.async {
+                    self.works = cyberlist.cyberpunk_works;
+                }
             }
             else {
                 let err = error?.localizedDescription ?? "error";

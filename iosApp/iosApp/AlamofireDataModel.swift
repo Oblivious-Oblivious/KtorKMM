@@ -18,7 +18,9 @@ class AlamofireDataModel: ObservableObject {
             .request("https://cyberpunk-data-host.dreamnotexpiring.com/")
             .responseDecodable(of: SwiftCyberList.self) { response in
                 if let data = response.value {
-                    self.works = data.cyberpunk_works;
+                    DispatchQueue.main.async {
+                        self.works = data.cyberpunk_works;
+                    }
                 }
                 else {
                     let err = response.error?.localizedDescription ?? "error";
