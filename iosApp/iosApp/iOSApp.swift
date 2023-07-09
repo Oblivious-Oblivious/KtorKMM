@@ -4,8 +4,8 @@ import SwiftUI
 struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
-//            ContentView(viewmodel: AlamofireDataModel());
-            ContentView(viewmodel: KtorDataModel());
+            ContentView(datamodel: AlamofireDataModel());
+//            ContentView(datamodel: KtorDataModel());
 		}
 	}
 }
