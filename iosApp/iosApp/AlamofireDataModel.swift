@@ -14,7 +14,7 @@ class AlamofireDataModel: ObservableObject {
 
     init() {
         AF
-            .request("https://cyberpunk-data-host.vercel.app/")
+            .request("https://cyberpunk-data-host.dreamnotexpiring.com/")
             .responseDecodable(of: SwiftCyberList.self) { response in
             guard let data = response.value else { return };
             data.cyberpunk_works.forEach { work in

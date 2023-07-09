@@ -8,7 +8,7 @@ class RetrofitDataModel {
     suspend fun get_json(): KotlinCyberList {
         return Retrofit
             .Builder()
-            .baseUrl("https://cyberpunk-data-host.vercel.app")
+            .baseUrl("https://cyberpunk-data-host.dreamnotexpiring.com/")
             .addConverterFactory(JacksonConverterFactory.create())
             .build()
             .create(KotlinCyberWorkApi::class.java)

@@ -9,7 +9,7 @@ import io.ktor.client.statement.*;
 
 class JsonGetter {
     suspend fun get_json(): CyberList {
-        val response = HttpClient().get("https://cyberpunk-data-host.vercel.app/");
+        val response = HttpClient().get("https://cyberpunk-data-host.dreamnotexpiring.com/");
         return Json.decodeFromString<CyberList>(response.bodyAsText());
     }
 }
