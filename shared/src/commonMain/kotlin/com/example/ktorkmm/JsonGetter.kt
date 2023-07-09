@@ -9,7 +9,7 @@ import io.ktor.client.statement.*;
 
 class JsonGetter {
     suspend fun get_json(): CyberList {
-        val response = HttpClient().get("https://lively-ganache-1b6917.netlify.app/cyberpunk.json");
+        val response = HttpClient().get("https://cyberpunk-data-host.vercel.app/");
         return Json.decodeFromString<CyberList>(response.bodyAsText());
     }
 }

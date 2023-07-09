@@ -14,7 +14,7 @@ class AlamofireDataModel: ObservableObject {
 
     init() {
         AF
-            .request("https://lively-ganache-1b6917.netlify.app/cyberpunk.json")
+            .request("https://cyberpunk-data-host.vercel.app/")
             .responseDecodable(of: SwiftCyberList.self) { response in
             guard let data = response.value else { return };
             data.cyberpunk_works.forEach { work in
