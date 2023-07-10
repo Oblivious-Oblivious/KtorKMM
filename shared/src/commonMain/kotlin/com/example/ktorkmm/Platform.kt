@@ -5,3 +5,9 @@ interface Platform {
 }
 
 expect fun getPlatform(): Platform
+
+class PlatformRetriever {
+    companion object {
+        val platform = getPlatform().name;
+    }
+}

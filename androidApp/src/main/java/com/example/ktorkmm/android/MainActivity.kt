@@ -60,7 +60,7 @@ fun GreetingView(works: List<CyberWork>, library: String) {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Works in ${library}")
+                    Text(text = "Works in ${library}: ${PlatformRetriever.platform}");
                 },
                 backgroundColor = Color.White,
                 contentColor = Color.Black,

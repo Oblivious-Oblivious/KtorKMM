@@ -7,7 +7,7 @@ struct ContentView: View {
 //    @ObservedObject var datamodel: KtorDataModel;
 
     var body: some View {
-        Text("Works in \(datamodel.library)")
+        Text("Works in \(datamodel.library): \(PlatformRetriever.companion.platform)")
             .padding(8);
         List {
             ForEach(datamodel.works, id: \.self) { work in
