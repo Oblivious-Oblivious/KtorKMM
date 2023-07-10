@@ -30,8 +30,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     var works by remember {
-//                        mutableStateOf(listOf<CyberWork>());
-                        mutableStateOf(listOf<KotlinCyberWork>());
+                        mutableStateOf(listOf<CyberWork>());
                     };
                     var library by remember {
                         mutableStateOf("");
@@ -55,8 +54,7 @@ class MainActivity : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun GreetingView(works: List<KotlinCyberWork>, library: String) {
-//fun GreetingView(works: List<CyberWork>, library: String) {
+fun GreetingView(works: List<CyberWork>, library: String) {
     Scaffold(
         topBar = {
             TopAppBar(

@@ -1,27 +1,29 @@
 package com.example.ktorkmm.android
 
+import com.example.ktorkmm.CyberList
+import com.example.ktorkmm.CyberWork
 import retrofit2.Retrofit
 import retrofit2.awaitResponse
-import retrofit2.converter.jackson.JacksonConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory;
 
 class RetrofitDataModel {
     val library = "Retrofit";
 
-    suspend fun get_json(): KotlinCyberList {
+    suspend fun get_json(): CyberList {
         return try {
             Retrofit
                 .Builder()
                 .baseUrl("https://cyberpunk-data-host.dreamnotexpiring.com/")
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(KotlinCyberWorkApi::class.java)
+                .create(CyberWorkApi::class.java)
                 .get_cyberpunk_data()
                 .awaitResponse()
                 .body()!!;
         }
         catch(e: Exception) {
             val err = e.localizedMessage ?: "error";
-            KotlinCyberList(listOf(KotlinCyberWork(err, err, err)));
+            CyberList(listOf(CyberWork(err, err, err)));
         }
     }
 }
