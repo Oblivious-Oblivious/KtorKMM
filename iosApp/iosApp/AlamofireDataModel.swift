@@ -19,7 +19,7 @@ class AlamofireDataModel: ObservableObject {
             .responseDecodable(of: SwiftCyberList.self) { response in
                 if let data = response.value {
                     DispatchQueue.main.async {
-                        self.works = data.cyberpunk_works;
+                        self.works = data.works;
                     }
                 }
                 else {
