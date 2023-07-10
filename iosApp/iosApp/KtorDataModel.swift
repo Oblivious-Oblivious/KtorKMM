@@ -14,10 +14,10 @@ class KtorDataModel: ObservableObject {
     @Published var library = "Ktor";
 
     init() {
-        JsonGetter().get_json { data, error in
+        KMMCommonKtorJsonGetter().getJson { data, error in
             if let cyberlist = data {
                 DispatchQueue.main.async {
-                    self.works = cyberlist.works;
+                    self.works = cyberlist.cyberpunk_works;
                 }
             }
             else {

@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface CyberWorkApi {
     @GET("/")
-    fun get_cyberpunk_data(): Call<CyberList>;
+    fun getCyberpunkData(): Call<CyberList>;
 }

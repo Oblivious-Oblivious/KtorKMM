@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 class RetrofitDataModel {
     val library = "Retrofit";
 
-    suspend fun get_json(): CyberList {
+    suspend fun getJson(): CyberList {
         return try {
             Retrofit
                 .Builder()
@@ -17,7 +17,7 @@ class RetrofitDataModel {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(CyberWorkApi::class.java)
-                .get_cyberpunk_data()
+                .getCyberpunkData()
                 .awaitResponse()
                 .body()!!;
         }

@@ -11,13 +11,14 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.ktorkmm.JsonGetter
 
 import androidx.compose.runtime.*;
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ktorkmm.CyberWork
+import com.example.ktorkmm.PlatformRetriever
+import com.example.ktorkmm.getPlatform
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     val scope = rememberCoroutineScope();
                     LaunchedEffect(true) {
                         scope.launch {
-                            works = datamodel.get_json().cyberpunk_works;
+                            works = datamodel.getJson().cyberpunk_works;
                             library = datamodel.library;
                         }
                     }

@@ -2,14 +2,14 @@ package com.example.ktorkmm.android
 
 import com.example.ktorkmm.CyberList
 import com.example.ktorkmm.CyberWork
-import com.example.ktorkmm.JsonGetter
+import com.example.ktorkmm.KMMCommonKtorJsonGetter
 
 class KtorDataModel {
     val library = "Ktor";
 
-    suspend fun get_json(): CyberList {
+    suspend fun getJson(): CyberList {
         return try {
-            JsonGetter().get_json();
+            KMMCommonKtorJsonGetter().getJson();
         }
         catch(e: Exception) {
             val err = e.localizedMessage ?: "error";

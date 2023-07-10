@@ -7,8 +7,8 @@ import io.ktor.client.*;
 import io.ktor.client.request.*;
 import io.ktor.client.statement.*;
 
-class JsonGetter {
-    suspend fun get_json(): CyberList {
+class KMMCommonKtorJsonGetter {
+    suspend fun getJson(): CyberList {
         return Json
             .decodeFromString(
                 HttpClient()
