@@ -1,16 +1,16 @@
-package com.example.ktorkmm.android
+package com.example.ktorkmm.android;
 
-import com.example.ktorkmm.CyberList
-import com.example.ktorkmm.CyberWork
-import retrofit2.Retrofit
-import retrofit2.awaitResponse
+import com.example.ktorkmm.CyberList;
+import com.example.ktorkmm.CyberWork;
+import retrofit2.Retrofit;
+import retrofit2.awaitResponse;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 class RetrofitDataModel {
     val library = "Retrofit";
 
-    suspend fun getJson(): CyberList {
-        return try {
+    suspend fun getJson(): CyberList =
+        try {
             Retrofit
                 .Builder()
                 .baseUrl("https://cyberpunk-data-host.dreamnotexpiring.com/")
@@ -25,5 +25,4 @@ class RetrofitDataModel {
             val err = e.localizedMessage ?: "error";
             CyberList(listOf(CyberWork(err, err, err)));
         }
-    }
 }

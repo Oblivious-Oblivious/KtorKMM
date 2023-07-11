@@ -1,8 +1,8 @@
-package com.example.ktorkmm.android
+package com.example.ktorkmm.android;
 
-import com.example.ktorkmm.CyberList
-import retrofit2.Call
-import retrofit2.http.GET
+import com.example.ktorkmm.CyberList;
+import retrofit2.Call;
+import retrofit2.http.GET;
 
 interface CyberWorkApi {
     @GET("/")

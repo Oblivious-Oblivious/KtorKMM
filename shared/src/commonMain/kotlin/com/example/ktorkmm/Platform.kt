@@ -1,10 +1,10 @@
-package com.example.ktorkmm
+package com.example.ktorkmm;
 
 interface Platform {
-    val name: String
+    val name: String;
 }
 
-expect fun getPlatform(): Platform
+expect fun getPlatform(): Platform;
 
 class PlatformRetriever {
     companion object {

@@ -1,4 +1,4 @@
-package com.example.ktorkmm
+package com.example.ktorkmm;
 
 import kotlinx.serialization.Serializable;
 
