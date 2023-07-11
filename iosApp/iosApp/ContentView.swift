@@ -3,8 +3,8 @@ import shared;
 import Alamofire;
 
 struct ContentView: View {
-    @ObservedObject var datamodel: AlamofireDataModel;
-//    @ObservedObject var datamodel: KtorDataModel;
+    @ObservedObject var datamodel = AlamofireDataModel();
+//    @ObservedObject var datamodel = KtorDataModel();
 
     var body: some View {
         Text("Works in \(datamodel.library): \(PlatformRetriever.companion.platform)")
