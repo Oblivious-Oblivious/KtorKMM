@@ -18,8 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ktorkmm.CyberWork
 import com.example.ktorkmm.PlatformRetriever
-import com.example.ktorkmm.getPlatform
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,20 +31,13 @@ class MainActivity : ComponentActivity() {
                     var works by remember {
                         mutableStateOf(listOf<CyberWork>());
                     };
-                    var library by remember {
-                        mutableStateOf("");
-                    };
                     val datamodel = RetrofitDataModel();
 //                    val datamodel = KtorDataModel();
 
-                    val scope = rememberCoroutineScope();
                     LaunchedEffect(true) {
-                        scope.launch {
-                            works = datamodel.getJson().cyberpunk_works;
-                            library = datamodel.library;
-                        }
+                        works = datamodel.getJson().cyberpunk_works;
                     }
-                    GreetingView(works, library);
+                    GreetingView(works, datamodel.library);
                 }
             }
         }
