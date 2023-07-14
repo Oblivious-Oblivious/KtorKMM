@@ -3,11 +3,11 @@ import shared;
 import Alamofire;
 
 struct ContentView: View {
-    @ObservedObject var datamodel = AlamofireDataModel();
-//    @ObservedObject var datamodel = KtorDataModel();
+//    @ObservedObject var datamodel = AlamofireDataModel();
+    @ObservedObject var datamodel = KtorDataModel();
 
     var body: some View {
-        Text("Works in \(datamodel.library): \(PlatformRetriever.companion.platform)")
+        Text("Works in \(datamodel.library)")
             .padding(8);
         List {
             ForEach(datamodel.works, id: \.self) { work in

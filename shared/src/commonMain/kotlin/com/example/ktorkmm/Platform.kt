@@ -1,13 +1,38 @@
 package com.example.ktorkmm;
 
-interface Platform {
+// CLASSES
+expect class PlatformClass {
+    fun name(): String;
+}
+
+// FUNCTIONS
+expect fun platformFunction(): String;
+
+// PROPERTIES
+expect val platformProperty: String;
+
+// OBJECT DECLARATIONS
+expect object PlatformObject {
     val name: String;
 }
 
-expect fun getPlatform(): Platform;
+// ENUMS
+expect enum class Direction {
+    NORTH, SOUTH, EAST, WEST;
 
-class PlatformRetriever {
+    fun display(): String
+}
+
+
+// NOTE Class below is used by both Kotlin and Swift
+class CommonDataModel {
     companion object {
-        val platform = getPlatform().name;
+        val platformFunctionCommon: () -> String = { platformFunction() };
+        val platformPropertyCommon: String = platformProperty;
+        val platformObjectCommon: PlatformObject = PlatformObject;
+
+        fun direction(direction: Direction): String {
+            return direction.display();
+        }
     }
 }

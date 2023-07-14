@@ -7,6 +7,7 @@ import androidx.compose.material.*;
 import androidx.compose.runtime.*;
 import androidx.activity.ComponentActivity;
 import androidx.activity.compose.setContent;
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize;
 import androidx.compose.foundation.layout.padding;
 import androidx.compose.foundation.lazy.LazyColumn;
@@ -16,8 +17,10 @@ import androidx.compose.ui.Modifier;
 import androidx.compose.ui.graphics.Color;
 import androidx.compose.ui.unit.dp;
 import androidx.compose.ui.unit.sp;
+import com.example.ktorkmm.CommonDataModel
 import com.example.ktorkmm.CyberWork;
-import com.example.ktorkmm.PlatformRetriever;
+import com.example.ktorkmm.Direction
+import com.example.ktorkmm.PlatformClass
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,13 +34,14 @@ class MainActivity : ComponentActivity() {
                     var works by remember {
                         mutableStateOf(listOf<CyberWork>());
                     };
-                    val datamodel = RetrofitDataModel();
-//                    val datamodel = KtorDataModel();
+//                    val datamodel = RetrofitDataModel();
+                    val datamodel = KtorDataModel();
 
                     LaunchedEffect(true) {
                         works = datamodel.getJson().cyberpunk_works;
                     }
-                    GreetingView(works, datamodel.library);
+//                    MainView(works, datamodel.library);
+                    ExpectActualView();
                 }
             }
         }
@@ -46,12 +50,12 @@ class MainActivity : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun GreetingView(works: List<CyberWork>, library: String) =
+fun MainView(works: List<CyberWork>, library: String) =
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Works in ${library}: ${PlatformRetriever.platform}");
+                    Text(text = "Works in ${library}");
                 },
                 backgroundColor = Color.White,
                 contentColor = Color.Black,
@@ -70,3 +74,32 @@ fun GreetingView(works: List<CyberWork>, library: String) =
             }
         }
     );
+@Composable
+fun ExpectActualView() =
+    Column {
+        Text(
+            text = "class: ${PlatformClass().name()}",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(8.dp),
+        );
+        Text(
+            text = "function: ${CommonDataModel.platformFunctionCommon()}",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(8.dp),
+        );
+        Text(
+            text = "property: ${CommonDataModel.platformPropertyCommon}",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(8.dp),
+        );
+        Text(
+            text = "object: ${CommonDataModel.platformObjectCommon.name}",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(8.dp),
+        );
+        Text(
+            text = "enum: ${CommonDataModel.direction(Direction.NORTH)}",
+            fontSize = 18.sp,
+            modifier = Modifier.padding(8.dp),
+        );
+    }
